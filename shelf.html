@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>You Found Us · The Foxfire Trail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Pinyon+Script&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  --parchment:#e9d9b3;
+  --parchment-deep:#d8c193;
+  --ink:#3b2a18;
+  --ink-soft:#5a4429;
+  --ember:#9a3324;
+  --ember-deep:#6e2116;
+  --pine:#3f4e3a;
+  --gold:#a97c34;
+  --woods-1:#141a14;
+  --woods-2:#1c231b;
+  --woods-3:#26301f;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  min-height:100vh;
+  font-family:"EB Garamond", Georgia, "Times New Roman", serif;
+  color:var(--ink);
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 8%, rgba(154,51,36,0.10), transparent 60%),
+    radial-gradient(ellipse 90% 70% at 15% 90%, var(--woods-3), transparent 70%),
+    radial-gradient(ellipse 90% 70% at 85% 10%, var(--woods-3), transparent 70%),
+    linear-gradient(160deg, var(--woods-1) 0%, var(--woods-2) 55%, var(--woods-1) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px 16px;
+  overflow-x:hidden;
+}
+.ambient{ position:fixed; inset:0; pointer-events:none; z-index:0; }
+.spark{
+  position:absolute; width:5px; height:5px; border-radius:50%;
+  background:radial-gradient(circle, #cfe8b8 0%, #8fae6a 45%, transparent 75%);
+  box-shadow:0 0 8px 2px rgba(180,220,140,0.55);
+  opacity:0; animation:drift 9s ease-in-out infinite;
+}
+@keyframes drift{
+  0%{ opacity:0; transform:translateY(0) translateX(0); }
+  15%{ opacity:0.85; }
+  50%{ opacity:0.5; transform:translateY(-40px) translateX(12px); }
+  85%{ opacity:0.7; }
+  100%{ opacity:0; transform:translateY(-90px) translateX(-8px); }
+}
+@media (prefers-reduced-motion: reduce){
+  .spark{ animation:none; opacity:0.4; }
+}
+
+.stage{ position:relative; z-index:1; width:100%; max-width:560px; }
+.card{
+  position:relative;
+  background:
+    radial-gradient(ellipse at 18% 12%, rgba(139,101,54,0.14), transparent 45%),
+    radial-gradient(ellipse at 88% 85%, rgba(139,101,54,0.16), transparent 50%),
+    linear-gradient(135deg, #efe0bf 0%, #e6d3a4 45%, #e0ca97 70%, #ecdcb6 100%);
+  border-radius:6px;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,0.65), 0 0 0 1px rgba(0,0,0,0.25);
+  padding:2px;
+}
+.card::after{
+  content:""; position:absolute; inset:10px; border:1.5px solid rgba(90,68,41,0.55);
+  outline:1px solid rgba(90,68,41,0.55); outline-offset:5px; border-radius:2px; pointer-events:none;
+}
+.card-inner{ position:relative; padding:2.1rem 1.9rem 2rem 1.9rem; }
+
+.fox-mark{ width:44px; height:44px; margin:0 auto 0.6rem auto; display:block; opacity:0.85; }
+.stop-label{
+  text-align:center; font-family:"Cinzel", serif; font-weight:600; font-size:0.68rem;
+  letter-spacing:0.22em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:0.5rem;
+}
+h1{
+  font-family:"Cinzel", serif; font-weight:600; font-size:1.7rem; text-align:center;
+  color:var(--ink); margin:0 0 0.7rem 0; text-wrap:balance; letter-spacing:0.01em;
+}
+.prompt, .flavor{
+  text-align:center; font-size:1.08rem; line-height:1.6; color:var(--ink-soft);
+  margin:0 auto 1.1rem auto; max-width:34ch; font-style:italic;
+}
+.divider{
+  width:70%; height:1px; margin:1.1rem auto; background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:0.7;
+}
+.divider::before{ content:"❦"; }
+
+form#gateForm{ display:flex; flex-direction:column; gap:0.7rem; align-items:center; margin-top:0.4rem; }
+#pwInput{
+  width:100%; max-width:320px; font-family:"EB Garamond", serif; font-size:1.15rem;
+  text-align:center; letter-spacing:0.08em; padding:0.65rem 0.9rem; border-radius:3px;
+  border:1.5px solid var(--gold); background:rgba(255,250,235,0.55); color:var(--ink);
+  outline:none; text-transform:uppercase;
+}
+#pwInput::placeholder{ color:rgba(59,42,24,0.45); text-transform:none; letter-spacing:0; font-style:italic; }
+#pwInput:focus{ box-shadow:0 0 0 3px rgba(169,124,52,0.35); }
+button[type="submit"]{
+  font-family:"Cinzel", serif; font-weight:600; letter-spacing:0.12em; font-size:0.85rem;
+  text-transform:uppercase; color:#f3e6c4; background:linear-gradient(180deg, var(--ember) 0%, var(--ember-deep) 100%);
+  border:none; padding:0.65rem 1.6rem; border-radius:3px; cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+button[type="submit"]:hover{ filter:brightness(1.08); }
+button[type="submit"]:focus-visible, #pwInput:focus-visible{ outline:2px solid var(--pine); outline-offset:2px; }
+
+.error{
+  text-align:center; color:var(--ember-deep); font-size:0.92rem; font-style:italic; margin-top:0.6rem;
+}
+.shake{ animation:shake 0.4s; }
+@keyframes shake{
+  10%,90%{ transform:translateX(-2px); } 20%,80%{ transform:translateX(4px); }
+  30%,50%,70%{ transform:translateX(-7px); } 40%,60%{ transform:translateX(7px); }
+}
+
+.letter-medallion{
+  width:78px; height:78px; margin:0 auto 0.5rem auto; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #a3452e, #7a2f1c 70%, #5c2213 100%);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.35), inset 0 0 0 3px rgba(255,255,255,0.08);
+  font-family:"Cinzel", serif; font-weight:700; font-size:1.7rem; color:#f3e6c4;
+}
+.medallion-caption{
+  text-align:center; font-family:"Cinzel", serif; letter-spacing:0.14em; font-size:0.62rem;
+  text-transform:uppercase; color:var(--ink-soft); margin-bottom:0.9rem;
+}
+.riddle{
+  font-style:italic; font-size:1.08rem; line-height:1.85; text-align:center;
+  color:var(--ink); margin:0.9rem 0; padding:0 0.3rem;
+}
+.phrase{
+  text-align:center; font-family:"Pinyon Script", cursive; font-size:2.1rem; color:var(--ember-deep);
+  margin:0.4rem 0 0.6rem 0;
+}
+.note{
+  text-align:center; font-size:0.92rem; color:var(--ink-soft); margin-top:0.5rem;
+}
+
+.password-seal{ margin:1.3rem auto 0.2rem auto; text-align:center; }
+.seal{
+  width:96px; height:96px; border-radius:50%; margin:0 auto 0.5rem auto;
+  background:radial-gradient(circle at 35% 30%, #a3452e, #7a2f1c 70%, #5c2213 100%);
+  display:flex; align-items:center; justify-content:center; position:relative;
+  box-shadow:0 3px 8px rgba(0,0,0,0.35), inset 0 0 0 3px rgba(255,255,255,0.08);
+}
+.seal::after{ content:""; position:absolute; inset:7px; border-radius:50%; border:1px dashed rgba(255,255,255,0.35); }
+.seal .word{
+  font-family:"Pinyon Script", cursive; color:#f1d9b0; font-size:1.05rem; line-height:1.2; transform:rotate(-3deg);
+}
+.password-caption{
+  font-family:"Cinzel", serif; font-variant:normal; letter-spacing:0.18em; font-size:0.68rem;
+  text-transform:uppercase; color:var(--ink-soft); margin-top:2px;
+}
+.password-word{
+  font-family:"Cinzel", serif; font-weight:600; font-size:1.5rem; color:var(--ink); letter-spacing:0.06em; margin-top:2px;
+}
+
+.map-wrap{ margin:0.8rem auto 0.2rem auto; max-width:340px; }
+.map-image{
+  display:block; margin:0 auto; width:auto; max-width:100%; max-height:400px;
+  border-radius:3px; box-shadow:0 6px 18px rgba(0,0,0,0.28), 0 0 0 1px rgba(90,68,41,0.25);
+}
+.map-caption{
+  text-align:center; font-style:italic; font-size:0.95rem; color:var(--ink-soft); margin-top:0.7rem;
+}
+
+[hidden]{ display:none !important; }
+.view{ animation:fadein 0.5s ease; }
+@keyframes fadein{ from{ opacity:0; transform:translateY(4px); } to{ opacity:1; transform:translateY(0); } }
+
+.footer-note{
+  text-align:center; font-size:0.78rem; color:rgba(59,42,24,0.5); margin-top:1.3rem; letter-spacing:0.04em;
+}
+</style>
+
+</head>
+<body>
+<div class="stage">
+  <div class="ambient" aria-hidden="true">
+    <div class="spark" style="left:85%; top:24%; animation-delay:0.2s; animation-duration:8.38s;"></div>
+    <div class="spark" style="left:32%; top:27%; animation-delay:5.89s; animation-duration:10.38s;"></div>
+    <div class="spark" style="left:73%; top:21%; animation-delay:4.72s; animation-duration:7.16s;"></div>
+    <div class="spark" style="left:15%; top:37%; animation-delay:1.86s; animation-duration:10.01s;"></div>
+    <div class="spark" style="left:75%; top:35%; animation-delay:5.73s; animation-duration:10.51s;"></div>
+    <div class="spark" style="left:57%; top:38%; animation-delay:3.59s; animation-duration:8.39s;"></div>
+    <div class="spark" style="left:4%; top:30%; animation-delay:5.59s; animation-duration:8.7s;"></div>
+    <div class="spark" style="left:23%; top:37%; animation-delay:7.66s; animation-duration:8.68s;"></div>
+    <div class="spark" style="left:15%; top:58%; animation-delay:0.77s; animation-duration:11.24s;"></div>
+    <div class="spark" style="left:81%; top:43%; animation-delay:6.46s; animation-duration:10.65s;"></div>
+  </div>
+  <div class="card">
+    <div class="card-inner">
+
+      <div id="locked" class="view locked">
+        <svg class="fox-mark" viewBox="0 0 200 200" fill="var(--ink-soft)" aria-hidden="true"><path d="M40,70 L70,6 L90,80 Z M160,70 L130,6 L110,80 Z M90,80 C62,88 46,116 56,146 C67,173 85,188 100,188 C115,188 133,173 144,146 C154,116 138,88 110,80 L100,102 Z"/></svg>
+        <div class="stop-label">Clue 6 of 8 &middot; The Foxfire Trail</div>
+        <h1>The Curiosity Shelves</h1>
+        <p class="prompt">Speak the word the pond house gave you.</p>
+        <form id="gateForm" autocomplete="off">
+          <label for="pwInput" style="position:absolute;left:-9999px;">Password</label>
+          <input id="pwInput" type="text" placeholder="Enter the password" autocomplete="off" />
+          <button type="submit">Unlock</button>
+        </form>
+        <div id="errorMsg" class="error" role="alert" hidden>The Fox doesn't recognize that word. Try again.</div>
+        <div class="footer-note">Samantha &amp; Nicholas &middot; December 12, 2026</div>
+      </div>
+
+      <div id="unlocked" class="view unlocked" hidden>
+        <div class="letter-medallion">9</div>
+        <div class="medallion-caption">a number to keep</div>
+        <div class="stop-label">Clue 6 of 8 &middot; The Foxfire Trail</div>
+        <h1>You Found Us</h1>
+        <p class="flavor">Every piece up here tells somebody else&rsquo;s story &mdash; chipped mugs, dented tins, candle stubs burned a hundred times over. This one&rsquo;s ours. Even the cats approve of the spot.</p>
+        <div class="divider"></div>
+      <div class="riddle">Every good night needs a soundtrack. Somewhere past the firelight, an old machine is still spinning its own tune &mdash; patient, a little scratchy, and no stranger to a house full of rooms, weapons, and guesses. Follow the sound, and see what it remembers.</div>
+
+      <div class="password-seal">
+        <div class="seal"><div class="word">speak this<br>to enter</div></div>
+        <div class="password-caption">the next password</div>
+        <div class="password-word">ENCORE</div>
+      </div>
+
+        <div class="footer-note">Samantha &amp; Nicholas &middot; December 12, 2026</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var CORRECT = "KEEPSAKE";
+  var STORAGE_KEY = "foxfire-unlocked-shelf";
+  var locked = document.getElementById('locked');
+  var unlocked = document.getElementById('unlocked');
+  var form = document.getElementById('gateForm');
+  var input = document.getElementById('pwInput');
+  var errorMsg = document.getElementById('errorMsg');
+
+  function reveal(){
+    locked.hidden = true;
+    unlocked.hidden = false;
+  }
+
+  try {
+    if (localStorage.getItem(STORAGE_KEY) === '1') { reveal(); }
+  } catch(e) {}
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var val = (input.value || '').trim().toUpperCase();
+    if (val === CORRECT) {
+      errorMsg.hidden = true;
+      try { localStorage.setItem(STORAGE_KEY, '1'); } catch(e) {}
+      reveal();
+    } else {
+      errorMsg.hidden = false;
+      form.classList.remove('shake'); void form.offsetWidth; form.classList.add('shake');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
